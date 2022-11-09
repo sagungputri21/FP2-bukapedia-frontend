@@ -6,7 +6,7 @@ const AddButton = () => {
       <CustomButton 
         text="Add to cart"
         onClick={""}
-        extraStyle=""
+        extraStyle="text-white bg-dangerous"
         />
     </div>
 }
