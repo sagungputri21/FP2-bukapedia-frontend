@@ -4,7 +4,7 @@ import AddButton from "../button/AddtoCardButton";
 import "../../styles/product-card.css";
 import { Card } from "react-bootstrap";
 
-const ProductCard = ({ image, id, title, price, rate, count, category}) => {
+const CategoryCard = ({ image, id, title, price, rate, count, category}) => {
   return (
     <Card className="product_item">
       <Link to={`/${id}`} style={{ textDecoration: "none" }}>
@@ -43,4 +43,4 @@ const ProductCard = ({ image, id, title, price, rate, count, category}) => {
   );
 };
 
-export default ProductCard;
+export default CategoryCard;

@@ -1,14 +1,16 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 
-const AddButton = () => {
+const AddButton = ({extraStyle}) => {
+  return (
     <div>
       <CustomButton 
         text="Add to cart"
         onClick={""}
-        extraStyle="text-white bg-dangerous"
-        />
+        extraStyle={extraStyle}
+      />
     </div>
+  )
 }
 
 export default AddButton;
