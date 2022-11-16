@@ -33,9 +33,7 @@ const ProductCard = ({ image, id, title, price, rate, count, category}) => {
                 </p>
               </div>
             </div>
-            <div className="btn">
-              <AddButton extraStyle={'w-full px-10 py-2'}/>
-            </div>
+            <AddButton extraStyle={'w-full px-10 py-2'} className="btn"/>
           </div>
         </div>
       </Link>

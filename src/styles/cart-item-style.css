@@ -1,0 +1,132 @@
+#img-product {
+    width: 72px;
+    height: 80px;
+    background: white;
+    padding: 5px;
+    border: 0.5px solid #D9D9D9;
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    gap: 64px;
+    background: white;
+    border-right: 1px solid;
+    border-color: #D9D9D9;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-quantity {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    border-color: rgb(30 58 138);
+    background-color: white;
+    color:rgb(30 58 138);
+}
+.button-quantity:hover {
+    background-color: rgb(30 58 138);
+    color: white;
+}
+
+.input-quantity {
+    border-color: #D9D9D9;
+    width: 35px;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 1px;
+    text-align: center;
+    background-color: rgb(248 250 252);
+}
+
+.input-quantity:focus {
+    outline: none;
+}
+
+.price {
+    font-weight: 600;
+    color: rgb(30 58 138);
+    font-size: 18px;
+}
+
+.full_section {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+}
+
+.update-quantity {
+    display: flex;
+    gap: 5px;
+}
+
+.product-info {
+    max-width: 550px;
+    min-width: 180px;
+    text-align: start;
+}
+
+.right-content {
+    display: flex;
+    justify-items: end;
+    gap: 64px;
+    margin-right: 45px;
+    align-items: center;
+}
+
+.delete-button {
+   color: red;
+   width: fit-content;
+   border-radius: 5px;
+   padding: 10px;
+}
+
+.delete-mobile {
+   display: flex;
+   justify-items: end;
+   margin-left: auto;
+   color: red;
+   width: fit-content;
+   border-radius: 5px;
+   margin-right: -5px;
+   margin-top: -5px;
+   margin-bottom: 12px;
+}
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text-note {
+    text-align: start;
+    margin-bottom: -5px;
+    margin-top: -10px;
+}
+@media (max-width: 1080px){
+    .total {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1000px){
+    .product-name {
+        font-size: 14px;
+    }
+    .category {
+        font-size: 12px;
+        margin-top: -5px;
+    }
+    .right-content {
+        gap: 32px;
+    }
+    .product-info {
+        margin-left: -20px;
+    }
+}
