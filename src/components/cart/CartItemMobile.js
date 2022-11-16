@@ -29,7 +29,7 @@ const CartItemMobile = ({ image, name, category, price, itemQuantity }) => {
           </div>
         </div>
         <hr className="hr"/>
-        <p className="text-note">Note: -</p>
+        <p className="text-note">Note : -</p>
       </div>
     </section>
   );
