@@ -2,18 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "../../api/baseApi";
 
-// const initialState = {
-//   product: [],
-//   loading: false,
-//   stock: JSON.parse(localStorage.getItem('stock')) || 20,
-// }
-const localData = localStorage.getItem("stocks");
+const localData = JSON.parse(localStorage.getItem("stocks"));
 console.log('local-data: ', localData);
 
 const initialState = {
   products: [],
   loading: false,
-  stocks: localData,
+  stocks: localData
 };
 
 export const getProducts = createAsyncThunk(
@@ -28,21 +23,27 @@ export const getProducts = createAsyncThunk(
   }
 );
 
+const setStockData = (dataStocks) => {
+  dataStocks = [];
+    getProducts.map((data) => {
+      dataStocks.push({
+        id: data.id,
+        qty: 20,
+      });
+    });
+    localStorage.setItem('stocks', JSON.stringify(dataStocks));
+};
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
     setStock: (state, action) => {
       state.products = action.payload;
-      if (!localData) {
-        const dataStocks = [];
-        state.products.forEach((data) => {
-          dataStocks.push({
-            id: data.id,
-            qty: 20,
-          });
-        });
-        localStorage.setItem('stocks', JSON.stringify(state.products));
+      if (localData === null) {
+        setStockData(
+          state.products.map((data) => data),
+        );
       }
     },
   },
@@ -50,18 +51,9 @@ const productsSlice = createSlice({
     [getProducts.pending]: (state) => {
       state.loading = true;
     },
-    [getProducts.fulfilled]: (state, { payload }) => {
+    [getProducts.fulfilled]: (state, {payload}) => {
       state.products = payload;
       state.loading = false;
-    //   if (localData === null) {
-    //     const dataStocks = [];
-    //     state.products.forEach((data) => {
-    //       dataStocks.push({
-    //         id: data.id,
-    //         qty: 20,
-    //       });
-    //     });
-    //   }
     },
     [getProducts.rejected]: (state, action) => {
       state.loading = true;

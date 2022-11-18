@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/user/Home';
 import CartPage from './pages/user/CartPage';
+import ProductDetail from './pages/user/DetailProduct';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/product/:id" element={<ProductDetail/>} />
       </Routes>
     </div>
   );

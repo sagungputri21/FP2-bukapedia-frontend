@@ -2,58 +2,43 @@ import React from "react";
 import CartItemDesktop from "../../components/cart/CartItemDesktop";
 import { Container } from "react-bootstrap";
 import CartItemMobile from "../../components/cart/CartItemMobile";
+import { data } from "../../data/dummyData";
+import { useSelector, useDispatch } from "react-redux";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const CartPage = () => {
-    return (
-        <Container>
-            <img src="/top-banner.png" className="w-full banner"/>
-        <section className="d-flex flex-column gap-3">
-            <CartItemDesktop 
-                image={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
-                name={"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}
-                category={"Men'ss Clothing"}
-                price={500}
-                itemQuantity={15}
-            />
-            <hr/>
-            <CartItemDesktop 
-                image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
-                name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
-                category={"Men's Clothing"}
-                price={500}
-                itemQuantity={15}
-            /> 
-            <CartItemMobile 
-             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
-             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
-             category={"Men's Clothing"}
-             price={500}
-             itemQuantity={15}
-             />
-             <CartItemMobile 
-             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
-             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
-             category={"Men's Clothing"}
-             price={500}
-             itemQuantity={15}
-             />
-             <CartItemMobile 
-             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
-             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
-             category={"Men's Clothing"}
-             price={500}
-             itemQuantity={15}
-             />
-             <CartItemMobile 
-             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
-             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
-             category={"Men's Clothing"}
-             price={500}
-             itemQuantity={15}
-             />
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+  const isMd = useMediaQuery(1000);
+  return (
+    <Container>
+      <img src="/top-banner.png" className="w-full banner" />
+      {cartItems.length === 0 ? (
+        <>
+          <hr />
+          <h5 className="text-center">Your cart is empty</h5>
+        </>
+      ) : (
+        <section className="d-flex flex-column gap-3 cart-sec">
+          {isMd == true ? (
+            <div className="for-mobile"> 
+              {cartItems.map((item) => (
+                <CartItemMobile item={item} key={item.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="for-desktop-view">
+              {cartItems.map((item) => (
+                <CartItemDesktop item={item} key={item.id} />
+              ))}
+              <hr />
+            </div>
+          )}
         </section>
-        </Container>
-    )
-}
+      )}
+    </Container>
+  );
+};
 
 export default CartPage;
