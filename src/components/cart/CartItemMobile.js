@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 const CartItemMobile = ({ image, name, category, price, itemQuantity }) => {
   const priceCount = price * itemQuantity;
   return (
-    <section className="border p-3">
+    <section className="border p-3 full-mobile">
       <div className="">
         <Button variant="danger" className="delete-mobile" onClick={""}>
           x

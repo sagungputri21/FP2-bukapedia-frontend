@@ -6,7 +6,8 @@ import CartItemMobile from "../../components/cart/CartItemMobile";
 const CartPage = () => {
     return (
         <Container>
-        <section>
+            <img src="/top-banner.png" className="w-full banner"/>
+        <section className="d-flex flex-column gap-3">
             <CartItemDesktop 
                 image={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
                 name={"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"}
@@ -23,6 +24,27 @@ const CartPage = () => {
                 itemQuantity={15}
             /> 
             <CartItemMobile 
+             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
+             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
+             category={"Men's Clothing"}
+             price={500}
+             itemQuantity={15}
+             />
+             <CartItemMobile 
+             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
+             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
+             category={"Men's Clothing"}
+             price={500}
+             itemQuantity={15}
+             />
+             <CartItemMobile 
+             image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
+             name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
+             category={"Men's Clothing"}
+             price={500}
+             itemQuantity={15}
+             />
+             <CartItemMobile 
              image={"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
              name={"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"}
              category={"Men's Clothing"}

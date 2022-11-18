@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AddButton from "../button/AddtoCardButton";
 import "../../styles/product-card.css";
+import { useNavigate } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 
 const ProductCard = ({ image, id, title, price, rate, count, category}) => {
+  const navigate = useNavigate();
+  
   return (
     <Card className="product_item">
       <Link to={`/${id}`} style={{ textDecoration: "none" }}>
