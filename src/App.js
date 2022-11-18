@@ -9,6 +9,7 @@ import AdminPage from './pages/adminPage';
 import Navigation from './components/navbar/Navbar';
 import UserPage from './pages/userPage';
 import PrivateRoute from './pages/login/privateRoutes';
+
 import {defaultGlobalState, globalStateContext, dispatchStateContext} from './globalState';
 
 const GlobalStateProvider = ({ children }) => {
@@ -24,6 +25,7 @@ const GlobalStateProvider = ({ children }) => {
     </globalStateContext.Provider>
   );
 };
+
 
 function App() {
 

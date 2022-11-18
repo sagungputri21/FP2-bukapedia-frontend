@@ -9,23 +9,29 @@ const UserPage = () => {
     const [state, dispatch] = useGlobalState()
 
     const handleLogout = () => {
-        setLogin(false)
+        dispatch({user: 0})
         navigate("/")
     }
 
-    if(state!==2){
-        alert("kamu bukan user")
-        navigate("/")
-    } else {
-        return(
-            <div>
-                <h1>Ini User Page</h1>
-                <Link to="/home">Home </Link>
-                <Link to="/cart">Cart </Link>
-                <button onClick={handleLogout}> Logout</button>
-            </div>       
-        )
+    const handlePage = () => {
+        console.log("ini sebelum", state)
+        if(state.user!==2){
+            alert("bukan user")
+        } else {
+            return (
+                <div >
+                    <h1>Ini user page</h1>
+                    <button onClick={handleLogout}> Logout</button>
+                </div>
+            )
+            
+        }
     }
+          
+    return(
+        handlePage()
+    )   
+    
 }
 
 export default UserPage
