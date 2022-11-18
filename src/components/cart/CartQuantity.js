@@ -1,25 +1,38 @@
 import React, {useState} from "react";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../features/cart/cartSlice";
 
-const CartQuantity = ({itemQuantity}) => {
-  const [quantity, setQuantity] = useState('');
+const CartQuantity = ({itemQuantity, id, title, category, image, price}) => {
+  // const {itemQuantity, id, title, category, image, price} = item;
+  const dispatch = useDispatch();
+  
+  const increaseQty = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        title,
+        category,
+        image,
+        price
+      })
+    )
+  }
 
-  const handleChange = (event) => {
-    setQuantity(event.target.value);
-
-    console.log("value is:", event.target.value);
-  };
-
-  itemQuantity = quantity;
+  const decreaseQty = () => {
+    dispatch(
+      cartActions.removeItem(id)
+    );
+  }
 
   return (
     <div className="update-quantity">
-      <button className="button-quantity">-</button>
+      <button className="button-quantity" onClick={decreaseQty}>-</button>
       <input
-        value={quantity}
+        value={itemQuantity}
         className="input-quantity"
-        onChange={handleChange}
+        // onChange={handleChange}
       />
-      <button className="button-quantity">+</button>
+      <button className="button-quantity" onClick={increaseQty}>+</button>
     </div>
   );
 };

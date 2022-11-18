@@ -3,8 +3,17 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import CartQuantity from "./CartQuantity";
 import "../../styles/cart-item-style.css";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../features/cart/cartSlice";
 
-const CartItemDesktop = ({ image, name, category, price, itemQuantity }) => {
+const CartItemDesktop = ({ item }) => {
+  const { id, image, name, category, price, itemQuantity } = item;
+  const dispatch = useDispatch();
+
+  const deleteItem = () => {
+    dispatch(cartActions.deleteItem(id));
+  };
+
   const priceCount = price * itemQuantity;
 
   return (
@@ -30,7 +39,7 @@ const CartItemDesktop = ({ image, name, category, price, itemQuantity }) => {
           </p>
         </div>
       </div>
-        <Button variant="danger" className="px-3 fs-6 delete-button" onClick={""}>
+        <Button variant="danger" className="px-3 fs-6 delete-button" onClick={deleteItem}>
           x
         </Button>
     </section>
