@@ -1,0 +1,131 @@
+.object-wrap {
+  display: grid;
+  justify-items: stretch;
+  align-items: stretch;
+  background-color: white;
+  padding: 24px;
+  border: 1px solid;
+  max-width: 1280px;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.category-title {
+  text-align: start;
+  font-weight: 500;
+  margin-bottom: -5px;
+  font-size: 18px;
+}
+
+.category_card {
+  background-color: rgb(96 165 250);
+  width: 289px;
+  border: none;
+}
+
+.image_ {
+  max-width: 80px;
+  height: 65px;
+}
+
+.image-name {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.75rem;
+  color: white;
+  font-weight: 600;
+}
+
+@media (max-width: 1376px){
+  .category_card {
+    max-width: max-content;
+    width: 280px;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin: 2px;
+  }
+  .object-wrap {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: 1280px){
+  .category_card {
+    max-width: 250px;
+    transform: scale(.97);
+  }
+  .object-wrap {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+@media (max-width: 976px){
+  .category_card {
+    width: 175px;
+    /* max-width: fit-content; */
+    transform: scale(.9);
+    margin: -5px;
+  }
+  .image-name {
+    flex-direction: column;
+  }
+  .category-name {
+    font-size: 18px;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 800px){
+  .category_card {
+    width: 175px;
+    /* max-width: fit-content; */
+    transform: scale(.85);
+    margin: -10px;
+  }
+  .image-name {
+    flex-direction: column;
+  }
+  .category-name {
+    font-size: 18px;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 750px){
+  .category_card {
+    width: max-content;
+    max-width: 148px;
+    transform: scale(.8);
+    /* margin: -7px; */
+  }
+  .image-name {
+    flex-direction: column;
+  }
+  .category-name {
+    font-size: 18px;
+  }
+  .object-wrap {
+    margin-left: 14px;
+    margin-right: 24px;
+    padding: 10px;
+  }
+  .category-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px){
+  .object-wrap {
+    max-width: fit-content;
+    padding: 20px;
+    transform: scale(.97)
+  }
+  .category-card {
+    padding: -10px;
+  }
+}
