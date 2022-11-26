@@ -10,7 +10,7 @@ const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  const isMd = useMediaQuery(1000);
+  const isMd = useMediaQuery(796);
   return (
     <Container>
       <img src="/top-banner.png" className="w-full banner" />
