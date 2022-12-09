@@ -11,6 +11,10 @@ const initialState = {
   stocks: localData
 };
 
+// const setItemData = (item) => {
+//   localStorage.setItem("products", JSON.stringify(item));
+// };
+
 export const getProducts = createAsyncThunk(
   "products/getProducts",
   async () => {
@@ -25,7 +29,7 @@ export const getProducts = createAsyncThunk(
 
 const setStockData = (dataStocks) => {
   dataStocks = [];
-    getProducts.map((data) => {
+    getProducts.foreach((data) => {
       dataStocks.push({
         id: data.id,
         qty: 20,
@@ -39,6 +43,7 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setStock: (state, action) => {
+      // const 
       state.products = action.payload;
       if (localData === null) {
         setStockData(

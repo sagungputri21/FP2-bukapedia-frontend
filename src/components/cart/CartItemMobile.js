@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../features/cart/cartSlice";
 
 const CartItemMobile = ({ item }) => {
-  const { id, image, name, category, price, itemQuantity } = item;
+  const { id, image, title, category, price, itemQuantity } = item;
   
   const dispatch = useDispatch();
 
@@ -29,9 +29,9 @@ const CartItemMobile = ({ item }) => {
           />
           <div className="product-info">
             {/* <p className="product-name">{`${
-              name.length >= 50 ? `${name.substring(0, 45)}...` : `${name}`
+              title.length >= 50 ? `${title.substring(0, 45)}...` : `${title}`
             }`}</p> */}
-            <p className="product-name">{name}</p>
+            <p className="product-name">{title}</p>
             <p className="category">{category}</p>
             <div className="d-flex cart-quantity">
               <p className="d-flex gap-2 price">${priceCount}</p>

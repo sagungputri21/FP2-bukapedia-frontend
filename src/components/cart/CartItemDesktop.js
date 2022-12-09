@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../features/cart/cartSlice";
 
 const CartItemDesktop = ({ item }) => {
-  const { id, image, name, category, price, itemQuantity } = item;
+  const { id, image, title, category, price, itemQuantity } = item;
   const dispatch = useDispatch();
 
   const deleteItem = () => {
@@ -27,7 +27,7 @@ const CartItemDesktop = ({ item }) => {
             className="w-24 h-24 bg-white"
           />
           <div className="product-info">
-            <p className="product-name">{name}</p>
+            <p className="product-name">{title}</p>
             <p className="category">{category}</p>
           </div>
         </div>
