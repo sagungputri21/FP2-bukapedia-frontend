@@ -2,21 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "../../api/baseApi";
 
-const localData = localStorage.getItem("stocks");
-console.log('local-data: ', localData);
+const localData = localStorage.getItem("stock");
+console.log("local-data: ", localData);
 
 const initialState = {
-  products: [],
+  dataStocks: [],
   loading: false,
-  stocks: localData
+  stock: localData,
 };
 
 // const setItemData = (item) => {
 //   localStorage.setItem("products", JSON.stringify(item));
 // };
 
-export const getProducts = createAsyncThunk(
-  "products/getProducts",
+export const getProductsStock = createAsyncThunk(
+  "stock/getProductsStock",
   async () => {
     try {
       const res = await axios.get(`${API}/products`);
@@ -38,43 +38,49 @@ export const getProducts = createAsyncThunk(
 //     localStorage.setItem('stocks', JSON.stringify(dataStocks));
 // };
 
-const productsSlice = createSlice({
-  name: "products",
+const stockSlice = createSlice({
+  name: "stock",
   initialState,
   reducers: {
     setStock(state, action) {
-      const product = action.payload
-      // state.stocks = action.payload;
-      if (!localData) {
+      // const product = action.payload
+      state.stock = action.payload;
+    },
+    updateStock(state, action) {
+      const product = action.payload;
+      const existingStock = state.dataStocks.find(
+        (item) => item.id === product.id
+      );
+
+      if (!existingStock) {
         // setStockData(
         //   state.stocks.map((dataStocks) => dataStocks),
         //   // console.log("stock = ", stocks)
         // );
-        const dataStocks = [];
-        product.forEach((data) => {
-          dataStocks.push({
-            id: data.id,
-            qty: 20,
-          });
+        state.dataStocks.push({
+          id: product.id,
+          qty: 20,
         });
-        localStorage.setItem('stocks', JSON.stringify(dataStocks));
+      } else {
+        existingStock.stock = action.payload.stock
       }
+      localStorage.setItem("stock", JSON.stringify(state.dataStocks));
     },
   },
   extraReducers: {
-    [getProducts.pending]: (state) => {
+    [getProductsStock.pending]: (state) => {
       state.loading = true;
     },
-    [getProducts.fulfilled]: (state, {payload}) => {
-      state.products = payload;
+    [getProductsStock.fulfilled]: (state, { payload }) => {
+      state.dataStocks = payload;
       state.loading = false;
     },
-    [getProducts.rejected]: (state, action) => {
+    [getProductsStock.rejected]: (state, action) => {
       state.loading = true;
       state.error = action.error.message;
     },
   },
 });
 
-export const { setStock } = productsSlice.actions;
-export default productsSlice.reducer;
+export const { setStock, updateStock } = stockSlice.actions;
+export default stockSlice.reducer;
