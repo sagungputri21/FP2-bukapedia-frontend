@@ -11,10 +11,6 @@ const initialState = {
   stocks: localData
 };
 
-// const setItemData = (item) => {
-//   localStorage.setItem("products", JSON.stringify(item));
-// };
-
 export const getProducts = createAsyncThunk(
   "products/getProducts",
   async () => {
@@ -27,40 +23,9 @@ export const getProducts = createAsyncThunk(
   }
 );
 
-// const setStockData = (dataStocks) => {
-//   dataStocks = [];
-//     getProducts.map((data) => {
-//       dataStocks.push({
-//         id: data.id,
-//         qty: 20,
-//       });
-//     });
-//     localStorage.setItem('stocks', JSON.stringify(dataStocks));
-// };
-
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {
-    setStock(state, action) {
-      const product = action.payload
-      // state.stocks = action.payload;
-      if (!localData) {
-        // setStockData(
-        //   state.stocks.map((dataStocks) => dataStocks),
-        //   // console.log("stock = ", stocks)
-        // );
-        const dataStocks = [];
-        product.forEach((data) => {
-          dataStocks.push({
-            id: data.id,
-            qty: 20,
-          });
-        });
-        localStorage.setItem('stocks', JSON.stringify(dataStocks));
-      }
-    },
-  },
   extraReducers: {
     [getProducts.pending]: (state) => {
       state.loading = true;
@@ -76,5 +41,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setStock } = productsSlice.actions;
+export const productActions = productsSlice.actions;
 export default productsSlice.reducer;

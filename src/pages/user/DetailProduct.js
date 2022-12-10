@@ -12,7 +12,7 @@ const ProductDetail = () => {
   // const loading = useSelector((state) => state.products.loading);
 
   useEffect(() => {
-    dispatch(getDetail(id), setData);
+    dispatch(getDetail(id));
   }, [dispatch]);
 
   console.log("data=> ", product);

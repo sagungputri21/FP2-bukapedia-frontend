@@ -30,21 +30,21 @@ export const getDetail = createAsyncThunk(
 const productDetailSlice = createSlice({
   name: "productDetail",
   initialState,
-  reducers: {
-    setData: (state, action) => {
-      state.product = action.payload;
-      if (!localData) {
-        const dataStocks = [];
-        state.product.forEach((data) => {
-          dataStocks.push({
-            id: data.id,
-            qty: 20,
-          });
-        });
-        localStorage.setItem('stocks', JSON.stringify(state.product));
-      }
-    },
-  },
+  // reducers: {
+  //   setData: (state, action) => {
+  //     state.product = action.payload;
+  //     if (!localData) {
+  //       const dataStocks = [];
+  //       state.product.forEach((data) => {
+  //         dataStocks.push({
+  //           id: data.id,
+  //           qty: 20,
+  //         });
+  //       });
+  //       localStorage.setItem('stocks', JSON.stringify(state.product));
+  //     }
+  //   },
+  // },
   extraReducers: {
     [getDetail.pending]: (state) => {
       state.loading = true;
@@ -60,5 +60,5 @@ const productDetailSlice = createSlice({
   },
 });
 
-export const { setData } = productDetailSlice.actions;
+export const productActions = productDetailSlice.actions;
 export default productDetailSlice.reducer;
