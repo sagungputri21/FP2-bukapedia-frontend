@@ -27,16 +27,7 @@ export const getProductsStock = createAsyncThunk(
   }
 );
 
-// const setStockData = (dataStocks) => {
-//   dataStocks = [];
-//     getProducts.map((data) => {
-//       dataStocks.push({
-//         id: data.id,
-//         qty: 20,
-//       });
-//     });
-//     localStorage.setItem('stocks', JSON.stringify(dataStocks));
-// };
+console.log("product => ", getProductsStock);
 
 const stockSlice = createSlice({
   name: "stock",

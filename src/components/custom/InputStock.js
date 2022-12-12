@@ -1,10 +1,11 @@
 import React from "react";
+import '../../styles/update-stock.css'
 
 const InputStock = ({ value, onChange, action }) => {
   return (
-    <div className="d-flex gap-2">
+    <div className="d-flex gap-2 mx-auto update-action">
       <input 
-        className=""
+        className="py-1"
         type="number"
         min={1}
         max={20}
@@ -12,7 +13,7 @@ const InputStock = ({ value, onChange, action }) => {
         onChange={onChange}
       />
       <button
-        className=""
+        className="update-button px-3"
         type="submit"
         onClick={action}
       >

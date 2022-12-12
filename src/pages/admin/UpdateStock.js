@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import InputStock from '../../components/custom/InputStock';
-import CustomTable from '../../components/table/CustomTable';
-import { getProductsStock, setStock, updateStock } from '../../features/admin/stockSlice';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import InputStock from "../../components/custom/InputStock";
+import CustomTable from "../../components/table/CustomTable";
+import UpdateTable from "../../components/table/UpdateTable";
+import Container from "react-bootstrap/Container";
+import {
+  getProductsStock,
+  setStock,
+  updateStock,
+} from "../../features/admin/stockSlice";
 
 const UpdateStockPage = () => {
   const dispatch = useDispatch();
-  const { product, stock } = useSelector((state) => state.stock);
+  const product = useSelector((state) => state.stock.dataStocks);
+  const stock = useSelector((state) => state.stock.stock);
 
   useEffect(() => {
-    dispatch(getProductsStock())
-  }, [dispatch])
+    dispatch(getProductsStock());
+  }, [dispatch]);
 
   //change on value when input/update stock
   const changeStockValue = (e) => {
@@ -18,42 +25,37 @@ const UpdateStockPage = () => {
   }
   // handle update action on update button
   const handleUpdate = (id) => {
-    dispatch(updateStock({id, stock}))
+    dispatch(updateStock({ id, stock }))
   }
 
+  console.log("product => ", product);
+  // console.log("stock => ", stock)
   return (
-    <div>
-      
-      <CustomTable 
-        header={['ID', 'Image', 'Product Name', 'Update Stock']}
-        children={
-          <tr>
-            {product?.map((product) => (
-              <>
-              <td>{product?.id}</td>
-              <td>
-                <img src={product?.image} alt="product-img" className=""/>
-              </td>
-              <td>
-                <h3>{product?.title}</h3>
-                <p>{product?.category}</p>
-              </td>
-              <td>
-                <InputStock 
-                  value={
-                    JSON.parse(localStorage.getItem('stock'))?.find((item) => item.id === product?.id)?.stock || 20
-                  }
-                  onChange={changeStockValue}
-                  action={handleUpdate(product?.id)}
-                />
-              </td>
-              </>
-            ))}
-          </tr>
+    <Container>
+    <div className="contaier-all">
+      <div>
+      <h2 className="text-all mb-10">Update Product Detail</h2>
+      </div>
+      <section>
+      <UpdateTable
+        header={["ID", "Image", "Product Name", "Update Stock"]}
+        product={product}
+        updateButton={
+          <InputStock
+            value={
+              JSON.parse(localStorage.getItem("stock"))?.find(
+                (item) => item.id === product?.id
+              )?.stock || 20
+            }
+            onChange={changeStockValue}
+            action={handleUpdate(product?.id)}
+          />
         }
       />
+      </section>
     </div>
-  )
-}
+    </Container>
+  );
+};
 
 export default UpdateStockPage;
