@@ -4,7 +4,8 @@ import axios from "axios";
 import useGlobalState from "../../useGlobal";
 import "../../styles/login-style.css"
 import Container from 'react-bootstrap/Container';
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const Login = () => {
     const [email, setEmail] = useState()
@@ -56,28 +57,43 @@ const Login = () => {
     }
   
     return (
-      <Container fluid>
-        <section className="login">
+        <div className="login">
           {state.user===0? 
-            <section>
-            <h1>Silahkan Login</h1>
-              Email : <input value={email} onChange={handleEmail} type="text" /> <br />
-              Password : <input value={password} onChange={handlePassword} type="text" /> <br />
-              <button onClick={handleLoginAcc}>Login</button>
-            <p>user : john@gmail.com m38rmF$ </p>
-            <p>admin : admin@bukapedia.com admin123 </p>
-          </section>  
-          : <section>
-              <h1>
-                Kamu sudah login
-              </h1>
-              <button onClick={handleLogout}>Logout</button>
-            </section>  
-          }
-          
-        </section>
-      </Container>
-        
+            <div className="wrapper">
+              <div className="title">
+                BUKAPEDIA
+              </div>
+              <form>
+                  <div className="field">
+                    <input value={email} onChange={handleEmail} type="text"/>
+                    <label>Email Address</label>
+                  </div>
+                  <div className="field">
+                    <input value={password} onChange={handlePassword} type="text"/>
+                    <label>Password</label>
+                  </div>
+                  
+                  <div className="field">
+                    <Button variant="primary" type="submit" onClick={handleLoginAcc}>
+                      Submit
+                    </Button>
+                  </div>
+                  <p>Email: admin@bukapedia.com , Password: admin123</p>
+                  <span></span>
+                  <p>Email: john@gmail.com, Password: m38rmF$</p>
+                  
+              </form>
+            </div>
+            
+            : <section>
+                  <h1>
+                    Kamu sudah login
+                  </h1>
+                  <button onClick={handleLogout}>Logout</button>
+              </section>
+            }
+        </div>
+             
     );
 }
 

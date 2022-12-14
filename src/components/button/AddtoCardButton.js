@@ -11,8 +11,6 @@ const AddButton = ({extraStyle, id, title, category, image, price }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  console.log('ini stateLogin', stateLogin)
-
   const addToCart = () => {
     if(stateLogin.user===0){
       navigate("/login")
