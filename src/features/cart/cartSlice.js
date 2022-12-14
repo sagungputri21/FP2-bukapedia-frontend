@@ -20,13 +20,13 @@ const checkout = localStorage.getItem("checkoutData") !== null
     : [];
 
 
-const stock = JSON.parse(localStorage.getItem("stock"))
+// const stock = JSON.parse(localStorage.getItem("stock"))
 
 const setItemFunc = (item, totalAmount, totalQuantity, remainingStock ) => {
   localStorage.setItem("cartItems", JSON.stringify(item));
   localStorage.setItem("totalAmount", JSON.stringify(totalAmount));
   localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
-  localStorage.setItem("stock", JSON.stringify(remainingStock));
+  // localStorage.setItem("stock", JSON.stringify(remainingStock));
   localStorage.setItem("checkout", JSON.stringify(item));
 };
 
@@ -127,14 +127,15 @@ const cartSlice = createSlice({
 
     checkoutCart(state, action) {
       const newItem = action.payload;
-      const existingItem = state.cartItems.find((item) => item.id === newItem.id);
+      // const existingItem = state.cartItems.find((item) => item.id === newItem.id);
       const checkoutItems = state.checkoutData.find((item) => item.id === newItem.id);
-      const remainingStock = []
-      const stocks = stock.find((item) => item.id === newItem.id)
-      if (existingItem.itemQuantity > stocks.qty) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== newItem.id);
-        state.totalQuantity = state.totalQuantity - existingItem.itemQuantity;
-      }else if (!checkoutItems) {
+      // const remainingStock = []
+      // const stocks = stock.find((item) => item.id === newItem.id)
+      // if (existingItem.itemQuantity > stocks.qty) {
+      //   state.cartItems = state.cartItems.filter((item) => item.id !== newItem.id);
+      //   state.totalQuantity = state.totalQuantity - existingItem.itemQuantity;
+      // }else 
+      if (!checkoutItems) {
         state.checkoutData.push({
           id: newItem.id,
           title: newItem.title,
@@ -143,21 +144,21 @@ const cartSlice = createSlice({
           price: newItem.price,
           itemQuantity: newItem.itemQuantity,
           priceCount: newItem.priceCount,
+          isCheckout: false 
         });
-        remainingStock = stocks.qty -= checkoutItems.itemQuantity;
+        // remainingStock = stocks.qty -= checkoutItems.itemQuantity;
       } else {
         checkoutItems.itemQuantity = 
            Number(checkoutItems.itemQuantity) + Number(newItem.itemQuantity);
         ;
         checkoutItems.priceCount =
           Number(checkoutItems.priceCount) + Number(newItem.priceCount);
-
-        remainingStock = stocks.qty -= checkoutItems.itemQuantity;
+        // remainingStock = stocks.qty -= checkoutItems.itemQuantity;
       }
       setItemFunc(
         state.cartItems.map((item) => item),
         state.checkout.map((item) => item),
-        state.stock.map((remainingStock) => remainingStock)
+        // state.stock.map((remainingStock) => remainingStock)
       );
     },
   },

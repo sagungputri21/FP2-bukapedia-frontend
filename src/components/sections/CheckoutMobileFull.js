@@ -9,19 +9,19 @@ const CheckoutFull = ({ onClick }) => {
     return (
       <section className="checkout-section-desktop">
         <div className="subtotal-text">
-            <h5 className="sub">Subtotal : </h5>
-            <h5 className="total">${total}</h5>
+            <h5 className="sub">Subtotal :
+            <span className="total"> ${total}</span> </h5>
         </div>
         <div className="d-flex cart-double-button">
           <CustomButton
             text="< Back to Shop" 
             onClick={() => navigate("/")}
-            extraStyle=""
+            extraStyle="back-home py-2 px-3"
           />
             <CustomButton
             text="Checkout Now" 
             onClick={onClick}
-            extraStyle=""
+            extraStyle="py-2 px-4"
           />
         </div>
       </section>

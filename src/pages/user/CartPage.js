@@ -4,10 +4,39 @@ import { Container } from "react-bootstrap";
 import CartItemMobile from "../../components/cart/CartItemMobile";
 import { useSelector } from "react-redux";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import CheckoutFull from "../../components/sections/CheckoutMobileFull"
+import CheckoutFull from "../../components/sections/CheckoutMobileFull";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../features/cart/cartSlice";
 
-const CartPage = () => {
+const CartPage = ({
+    id,
+    title,
+    category,
+    image,
+    price,
+    itemQuantity,
+    priceCount,
+    isCheckout
+  }) => {
+
+  const dispatch = useDispatch();
+
   const cartItems = useSelector((state) => state.cart.cartItems);
+
+  const checkoutData = () => {
+    dispatch(
+      cartActions.checkoutCart({
+        id,
+        title,
+        category,
+        image,
+        price,
+        itemQuantity,
+        priceCount,
+        isCheckout
+      })
+    );
+  };
 
   const isMd = useMediaQuery(1000);
   return (
@@ -43,7 +72,7 @@ const CartPage = () => {
                 </div>
               ))}
               <section>
-                <CheckoutFull onClick={""}/>
+                <CheckoutFull onClick={checkoutData, isCheckout == true}/>
               </section>
             </div>
           )}

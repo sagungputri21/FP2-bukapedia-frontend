@@ -237,12 +237,12 @@
     justify-content: end;
     justify-items: end;
     align-items: flex-end;
-    margin-right: 72px;
+    margin-right: 68px;
     margin-top: 24px;
 }
 
 .subtotal-text .sub {
-    margin-right: 18px;
+    margin-right: 12px;
     font-size: 18px;
 }
 
@@ -250,4 +250,18 @@
     /* margin-right: 12px; */
     font-weight: 600;
     font-size: 24px;
+    color:rgb(30 58 138);
+}
+
+.cart-double-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    pading-left: 64px;
+    padding-right: 64px;
+}
+
+.back-home {
+    background-color: inherit;
+    color: rgb(30 58 138);
 }

@@ -1,0 +1,34 @@
+.left-section {
+    max-width: 65%;
+    text-align: start;
+    padding: 32px;
+    padding-bottom: 40px;
+    border: none;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-color: #155e75;
+    margin-left: 16px;
+}
+
+.product-left {
+    display: flex;
+    gap: 64px;
+}
+
+.text-title {
+    font-size: 24px;
+}
+
+.image-detail:hover {
+    transform: scale(1.25);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.full-wrap-detail {
+    margin-top: 64px;
+}
+
+.more-similar {
+    text-align: start;
+    margin-top: 40px;
+}
