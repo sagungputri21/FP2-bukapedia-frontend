@@ -1,20 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AddButton from "../button/AddtoCardButton";
 import "../../styles/product-card.css";
 import { Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { setStock } from '../../features/products/productsSlice';
-import { useEffect } from "react";
 import {Button} from "react-bootstrap";
 import { cartActions } from "../../features/cart/cartSlice";
 
 const ProductCard = ({ image, id, title, price, rate, count, category}) => {
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(setStock);
-  // }, [dispatch]);
 
   const addToCart = () => {
     dispatch(
@@ -57,17 +50,18 @@ const ProductCard = ({ image, id, title, price, rate, count, category}) => {
                 </p>
               </div>
             </div>
-            {/* <AddButton extraStyle={'w-full px-10 py-2'} className="btn"/> */}
-            <Button 
+          </div>
+        </div>
+      </Link>
+      <div className="add-cart-button">
+      <Button 
               extraStyle={'w-full px-10 py-2'} 
-              className="btn"
+              className="btn-add mx-auto px-auto"
               onClick={addToCart}
             >
               Add to cart
             </Button>
-          </div>
-        </div>
-      </Link>
+            </div>
     </Card>
   );
 };

@@ -2,11 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "../../api/baseApi";
 
-const localData = localStorage.getItem("stock");
+const localData = JSON.parse(localStorage.getItem("stock"));
 console.log("local-data: ", localData);
 
 const initialState = {
-  dataStocks: [],
+  products: [],
   loading: false,
   stock: localData,
 };
@@ -39,23 +39,24 @@ const stockSlice = createSlice({
     },
     updateStock(state, action) {
       const product = action.payload;
-      const existingStock = state.dataStocks.find(
+      const existingStock = state.products.find(
         (item) => item.id === product.id
       );
 
       if (!existingStock) {
-        // setStockData(
-        //   state.stocks.map((dataStocks) => dataStocks),
-        //   // console.log("stock = ", stocks)
-        // );
-        state.dataStocks.push({
-          id: product.id,
-          qty: 20,
-        });
+        const dataStocks = [];
+        state.products.forEach((data) => {
+          dataStocks.push({
+            id: data.id,
+            qty: 20,
+          });
+        })
+        localStorage.setItem("stock", JSON.stringify(dataStocks));
+        console.log('dataStock =>', dataStocks)
       } else {
-        existingStock.stock = action.payload.stock
+        state.products[existingStock].stock = action.payload.stock
+        localStorage.setItem("stock", JSON.stringify(state.stock));
       }
-      localStorage.setItem("stock", JSON.stringify(state.dataStocks));
     },
   },
   extraReducers: {
@@ -63,7 +64,7 @@ const stockSlice = createSlice({
       state.loading = true;
     },
     [getProductsStock.fulfilled]: (state, { payload }) => {
-      state.dataStocks = payload;
+      state.products = payload;
       state.loading = false;
     },
     [getProductsStock.rejected]: (state, action) => {

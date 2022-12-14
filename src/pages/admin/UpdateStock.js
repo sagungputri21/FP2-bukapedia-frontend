@@ -12,7 +12,7 @@ import {
 
 const UpdateStockPage = () => {
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.stock.dataStocks);
+  const product = useSelector((state) => state.stock.products);
   const stock = useSelector((state) => state.stock.stock);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const UpdateStockPage = () => {
   }
 
   console.log("product => ", product);
-  // console.log("stock => ", stock)
+  console.log("stock => ", stock);
   return (
     <Container>
     <div className="contaier-all">
@@ -40,17 +40,9 @@ const UpdateStockPage = () => {
       <UpdateTable
         header={["ID", "Image", "Product Name", "Update Stock"]}
         product={product}
-        updateButton={
-          <InputStock
-            value={
-              JSON.parse(localStorage.getItem("stock"))?.find(
-                (item) => item.id === product?.id
-              )?.stock || 20
-            }
-            onChange={changeStockValue}
-            action={handleUpdate(product?.id)}
-          />
-        }
+        value={stock}
+        onChange={changeStockValue}
+        action={handleUpdate(product?.id)}
       />
       </section>
     </div>

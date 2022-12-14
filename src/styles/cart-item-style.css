@@ -85,7 +85,7 @@
 }
 
 .delete-button {
-   color: red;
+   background-color: #fecaca;
    width: fit-content;
    border-radius: 5px;
    padding: 10px;

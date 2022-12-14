@@ -92,12 +92,15 @@
   }
   
   .bottom_section {
-    bottom: 12px;
+    bottom: 54px;
     position: absolute;
     width: 100%;
   }
 
-  .btn {
+  .btn-add {
+    bottom: 20px;
+    position: absolute;
+    width: 100%;
     display: inline-block;
     font-size: 14px;
     line-height: 1.42857143;
@@ -110,7 +113,6 @@
     outline-color: rgb(30 58 138);
     border-radius: 0px;
     width: 88%;
-    margin-left: -28px;
     background-color: none;
     color: rgb(30 64 175);
     font-weight: 600;
@@ -118,6 +120,11 @@
     line-height: 18px; 
   }
   
+  .add-cart-button {
+    display: flex;
+    justify-content: center;
+    justify-items: center
+  }
 Link {
     text-decoration: none !important;
 }
