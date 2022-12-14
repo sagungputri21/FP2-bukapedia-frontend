@@ -34,11 +34,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
-          <Route path="/product/:id" element={<PrivateRoute><ProductDetail/></PrivateRoute>} />
+          <Route path="/product/:productId" element={<PrivateRoute><ProductDetail/></PrivateRoute>} />
           <Route path='/admin/update-stock' element= {<PrivateRoute><UpdateStockPage/></PrivateRoute>} />
           <Route path='/admin/rekap' element={<PrivateRoute><RekapPenjualan/></PrivateRoute>} /> */}
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/product/:id" element={<ProductDetail/>} />
+          <Route path="/product/:productId" element={<ProductDetail/>} />
           <Route path='/admin/update-stock' element= {<UpdateStockPage/>} />
           <Route path='/admin/rekap' element={<RekapPenjualan/>} />
           <Route path='/login' element ={<Login/>}/>

@@ -3,8 +3,8 @@ import CustomButton from "./CustomButton";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../features/cart/cartSlice";
 
-const AddButton = ({extraStyle}, item) => {
-  const { id, title, category, image, price } = item;
+const AddButton = ({extraStyle, id, title, category, image, price }) => {
+  // const {id, title, category, image, price} = item
   const dispatch = useDispatch();
 
   const addToCart = () => {
