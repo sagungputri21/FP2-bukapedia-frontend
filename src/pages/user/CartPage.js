@@ -38,6 +38,10 @@ const CartPage = ({
     );
   };
 
+  const handleLogin = () => {
+    
+  }
+
   const isMd = useMediaQuery(1000);
   return (
     <>

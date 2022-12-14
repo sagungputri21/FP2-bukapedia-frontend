@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import { Container, Nav} from "react-bootstrap";
-import "./style.css"
+// import "./style.css"
 import useGlobalState from "../../useGlobal";
 import { useNavigate } from "react-router-dom";
 

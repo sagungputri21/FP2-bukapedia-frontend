@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useGlobalState from "../../useGlobal";
+import "../../styles/login-style.css"
+import Container from 'react-bootstrap/Container';
+
 
 const Login = () => {
     const [email, setEmail] = useState()
@@ -53,7 +56,8 @@ const Login = () => {
     }
   
     return (
-        <div>
+      <Container fluid>
+        <section className="login">
           {state.user===0? 
             <section>
             <h1>Silahkan Login</h1>
@@ -61,17 +65,19 @@ const Login = () => {
               Password : <input value={password} onChange={handlePassword} type="text" /> <br />
               <button onClick={handleLoginAcc}>Login</button>
             <p>user : john@gmail.com m38rmF$ </p>
-            <p>admin : admin@bukapedia.com admin123$ </p>
+            <p>admin : admin@bukapedia.com admin123 </p>
           </section>  
-        : <section>
-            <h1>
-              Kamu sudah login
-            </h1>
-          <button onClick={handleLogout}>Logout</button>
-        </section>  
-      }
+          : <section>
+              <h1>
+                Kamu sudah login
+              </h1>
+              <button onClick={handleLogout}>Logout</button>
+            </section>  
+          }
           
-        </div>
+        </section>
+      </Container>
+        
     );
 }
 
