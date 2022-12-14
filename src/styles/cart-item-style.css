@@ -63,6 +63,7 @@
 
 .full-mobile {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-bottom: 16px;
 }
 
 .update-quantity {
@@ -221,4 +222,32 @@
     margin-bottom: -5px;
     display: flex;
     align-items: start;
+}
+
+.checkout-section-desktop {
+    /* display: flex; */
+    padding: 10px;
+    background-color: rgba(230, 238, 245, 0.89);
+    margin-top: -10px;
+}
+
+.subtotal-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    justify-items: end;
+    align-items: flex-end;
+    margin-right: 72px;
+    margin-top: 24px;
+}
+
+.subtotal-text .sub {
+    margin-right: 18px;
+    font-size: 18px;
+}
+
+.subtotal-text .total {
+    /* margin-right: 12px; */
+    font-weight: 600;
+    font-size: 24px;
 }

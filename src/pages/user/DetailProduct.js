@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import "../../styles/main-page.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getDetail, setData } from "../../features/products/productDetailSlice";
-import { Button } from "react-bootstrap";
+import { getDetail } from "../../features/products/productDetailSlice";
 import { cartActions } from "../../features/cart/cartSlice";
 import AddButton from "../../components/button/AddtoCardButton";
 
@@ -13,19 +12,6 @@ const ProductDetail = ({ image, id, title, price, category }) => {
 
   const product = useSelector((state) => state.productDetail.product);
   // const loading = useSelector((state) => state.products.loading);
-
-  const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id,
-        title,
-        category,
-        image,
-        price,
-      })
-    )
-    console.log("succes add to cart")
-  }
 
   useEffect(() => {
     dispatch(getDetail(productId));

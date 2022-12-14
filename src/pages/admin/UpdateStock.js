@@ -34,7 +34,7 @@ const UpdateStockPage = () => {
     <Container>
     <div className="contaier-all">
       <div>
-      <h2 className="text-all mb-10">Update Product Detail</h2>
+        <h2 className="text-all mb-10">Update Product Detail</h2>
       </div>
       <section>
       <UpdateTable

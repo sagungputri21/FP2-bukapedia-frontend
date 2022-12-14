@@ -2,13 +2,12 @@ import React from "react";
 import CartItemDesktop from "../../components/cart/CartItemDesktop";
 import { Container } from "react-bootstrap";
 import CartItemMobile from "../../components/cart/CartItemMobile";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import CartHeader from '../../components/custom/CartHeeader'
+import CheckoutFull from "../../components/sections/CheckoutMobileFull"
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
   const isMd = useMediaQuery(1000);
   return (
@@ -16,7 +15,7 @@ const CartPage = () => {
     <div className="header mt-0">
         <section className="cart-header d-flex gap-4">
           <img src="/icons/grocery-store.png"/>
-          <h2 className="header-h2 my-auto">Your Cart</h2>
+          <h2 className="header-h2 my-auto">My Cart</h2>
         </section>
     </div>
     <Container>
@@ -34,7 +33,6 @@ const CartPage = () => {
               {cartItems.map((item) => (
                 <CartItemMobile item={item} key={item.id} />
               ))}
-              <hr />
             </div>
           ) : (
             <div className="for-desktop-view mt-3">
@@ -44,6 +42,9 @@ const CartPage = () => {
                   <hr />
                 </div>
               ))}
+              <section>
+                <CheckoutFull onClick={""}/>
+              </section>
             </div>
           )}
         </section>
