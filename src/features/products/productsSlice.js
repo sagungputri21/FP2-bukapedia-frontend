@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "../../api/baseApi";
 
-const localData = JSON.parse(localStorage.getItem("stocks"));
+const localData = localStorage.getItem("stocks");
 console.log('local-data: ', localData);
 
 const initialState = {
@@ -23,30 +23,9 @@ export const getProducts = createAsyncThunk(
   }
 );
 
-const setStockData = (dataStocks) => {
-  dataStocks = [];
-    getProducts.map((data) => {
-      dataStocks.push({
-        id: data.id,
-        qty: 20,
-      });
-    });
-    localStorage.setItem('stocks', JSON.stringify(dataStocks));
-};
-
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {
-    setStock: (state, action) => {
-      state.products = action.payload;
-      if (localData === null) {
-        setStockData(
-          state.products.map((data) => data),
-        );
-      }
-    },
-  },
   extraReducers: {
     [getProducts.pending]: (state) => {
       state.loading = true;
@@ -62,5 +41,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setStock } = productsSlice.actions;
+export const productActions = productsSlice.actions;
 export default productsSlice.reducer;

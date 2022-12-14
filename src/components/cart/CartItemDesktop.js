@@ -14,6 +14,26 @@ const CartItemDesktop = ({ item }) => {
     dispatch(cartActions.deleteItem(id));
   };
 
+  const increaseQty = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        title,
+        category,
+        image,
+        price,
+      })
+    );
+  };
+
+  const decreaseQty = () => {
+    dispatch(cartActions.removeItem(id));
+  };
+
+  const stock = JSON.parse(localStorage.getItem("stock")).find(
+    (item) => item.id === id
+  );
+
   const priceCount = price * itemQuantity;
 
   return (
@@ -29,19 +49,37 @@ const CartItemDesktop = ({ item }) => {
           <div className="product-info">
             <p className="product-name">{title}</p>
             <p className="category">{category}</p>
+            {stock.qty < itemQuantity ? (
+              <p className="text-note">
+                <span style={{ color: "red"}}>
+                  {" "}
+                  *The number of orders exceeds the available stock!
+                </span>
+              </p>
+            ) : (
+              <p className="text-note"></p>
+            )}
           </div>
         </div>
         <div className="d-flex px-10 right-content">
           <p className="price">${price}</p>
-          <CartQuantity itemQuantity={itemQuantity} />
+          <CartQuantity
+            itemQuantity={itemQuantity}
+            increase={increaseQty}
+            decrease={decreaseQty}
+          />
           <p className="d-flex gap-2 total">
             Total : <span className="price">${priceCount}</span>
           </p>
         </div>
       </div>
-        <Button variant="danger" className="px-3 fs-6 delete-button" onClick={deleteItem}>
-          x
-        </Button>
+      <Button
+        variant="danger"
+        className="px-3 fs-6 delete-button"
+        onClick={deleteItem}
+      >
+        x
+      </Button>
     </section>
   );
 };

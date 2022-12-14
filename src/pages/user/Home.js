@@ -4,7 +4,7 @@ import ProductCard from "../../components/cards/ProductCard";
 import '../../styles/main-page.css'
 import CategorySection from "../../components/sections/CategorySection";
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, setStock } from '../../features/products/productsSlice';
+import { getProducts } from '../../features/products/productsSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Home = () => {
   // const loading = useSelector((state) => state.products.loading);
 
   useEffect(() => {
-    dispatch(getProducts(), setStock);
+    dispatch(getProducts());
   }, [dispatch]);
   console.log('data=> ', allProducts)
 

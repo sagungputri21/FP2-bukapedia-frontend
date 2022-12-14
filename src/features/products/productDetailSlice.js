@@ -6,20 +6,17 @@ const productData = localStorage.getItem("product") !== null
     ? JSON.parse(localStorage.getItem("product"))
     : [];
 
-const localData = JSON.parse(localStorage.getItem("stocks"));
-console.log('local-data: ', localData);
 
 const initialState = {
   product: productData,
   loading: false,
-  stocks: localData,
 };
 
 export const getDetail = createAsyncThunk(
   "product/getDetail",
-  async (id) => {
+  async (productId) => {
     try {
-      const res = await axios.get(`${API}/products/${id}`);
+      const res = await axios.get(`${API}/products/${productId}`);
       return res.data;
     } catch (err) {
       console.log("error ===> ", err);
@@ -30,21 +27,6 @@ export const getDetail = createAsyncThunk(
 const productDetailSlice = createSlice({
   name: "productDetail",
   initialState,
-  reducers: {
-    setData: (state, action) => {
-      state.product = action.payload;
-      if (!localData) {
-        const dataStocks = [];
-        state.product.forEach((data) => {
-          dataStocks.push({
-            id: data.id,
-            qty: 20,
-          });
-        });
-        localStorage.setItem('stocks', JSON.stringify(state.product));
-      }
-    },
-  },
   extraReducers: {
     [getDetail.pending]: (state) => {
       state.loading = true;
@@ -60,5 +42,5 @@ const productDetailSlice = createSlice({
   },
 });
 
-export const { setData } = productDetailSlice.actions;
+export const productActions = productDetailSlice.actions;
 export default productDetailSlice.reducer;
