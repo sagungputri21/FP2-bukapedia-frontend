@@ -33,6 +33,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
           <Route path="/product/:productId" element={<PrivateRoute><ProductDetail/></PrivateRoute>} />
           <Route path='/admin/update-stock' element= {<PrivateRoute><UpdateStockPage/></PrivateRoute>} />

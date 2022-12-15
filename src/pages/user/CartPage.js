@@ -38,7 +38,8 @@ const CartPage = ({
     );
   };
 
-  const isMd = useMediaQuery(796);
+  const isMd = useMediaQuery(1000);
+
   return (
     <>
     <div className="header mt-0">
@@ -72,7 +73,7 @@ const CartPage = ({
                 </div>
               ))}
               <section>
-                <CheckoutFull onClick={checkoutData, isCheckout == true}/>
+                <CheckoutFull onClick={checkoutData}/>
               </section>
             </div>
           )}
