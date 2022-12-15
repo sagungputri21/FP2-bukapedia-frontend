@@ -38,8 +38,8 @@ const CartPage = ({
     );
   };
 
-
   const isMd = useMediaQuery(1000);
+
   return (
     <>
     <div className="header mt-0">

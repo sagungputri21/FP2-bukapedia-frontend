@@ -47,7 +47,7 @@ const CartItemMobile = ({ item }) => {
             id="img-product"
             className="w-24 h-24 bg-white"
           />
-          <div className="product-info">
+          <div className="product-info">e
             <p className="product-name">{title}</p>
             <p className="category">{category}</p>
             <div className="d-flex cart-price mx-auto">
