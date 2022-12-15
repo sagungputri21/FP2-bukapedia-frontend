@@ -34,8 +34,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/product/:productId" element={<ProductDetail/>} />
           <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
-          <Route path="/product/:productId" element={<PrivateRoute><ProductDetail/></PrivateRoute>} />
           <Route path='/admin/update-stock' element= {<PrivateRoute><UpdateStockPage/></PrivateRoute>} />
           <Route path='/admin/rekap' element={<PrivateRoute><RekapPenjualan/></PrivateRoute>} />
         </Routes>
