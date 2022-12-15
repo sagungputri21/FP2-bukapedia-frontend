@@ -1,18 +1,18 @@
 export const category = [
     {
-        title: "Men's Clothing",
+        title: "men's clothing",
         imgUrl: "/product-sample/mens.png"
     },
     {
-        title: "Jewelery",
+        title: "jewelery",
         imgUrl: "/product-sample/jewel.png"
     },
     {
-        title: "Electronics",
+        title: "electronics",
         imgUrl: "/product-sample/acer.png"
     },
     {
-        title: "Women's Clothing",
+        title: "women's clothing",
         imgUrl: "/product-sample/women.png"
     }
 ]

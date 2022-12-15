@@ -143,8 +143,7 @@ const cartSlice = createSlice({
           image: newItem.image,
           price: newItem.price,
           itemQuantity: newItem.itemQuantity,
-          priceCount: newItem.priceCount,
-          isCheckout: false 
+          priceCount: newItem.priceCount
         });
         // remainingStock = stocks.qty -= checkoutItems.itemQuantity;
       } else {
@@ -157,8 +156,8 @@ const cartSlice = createSlice({
       }
       setItemFunc(
         state.cartItems.map((item) => item),
-        state.checkout.map((item) => item),
-        // state.stock.map((remainingStock) => remainingStock)
+        state.checkoutData.map((item) => item),
+        state.totalQuantity
       );
     },
   },

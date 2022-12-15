@@ -89,7 +89,7 @@ const Login = () => {
                   <h1>
                     Kamu sudah login
                   </h1>
-                  <button onClick={handleLogout}>Logout</button>
+                  <button className="logout-button-2 mx-auto px-3 py-1" onClick={handleLogout}>Logout</button>
               </section>
             }
         </div>

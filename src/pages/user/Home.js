@@ -22,7 +22,7 @@ const Home = () => {
       <img src="/top-banner.png" className="w-full banner"/>
     <div className="container-xxl">
     <div className="product_home_section">
-      <CategorySection />
+      <CategorySection allProducts={allProducts}/>
       <section className="container-xxl all-products mt-20">
         <h2 className="text-all">All of Our Products</h2>
         <hr/>

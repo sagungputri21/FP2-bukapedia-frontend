@@ -38,9 +38,6 @@ const CartPage = ({
     );
   };
 
-  const handleLogin = () => {
-    
-  }
 
   const isMd = useMediaQuery(1000);
   return (
@@ -76,7 +73,7 @@ const CartPage = ({
                 </div>
               ))}
               <section>
-                <CheckoutFull onClick={checkoutData, isCheckout == true}/>
+                <CheckoutFull onClick={checkoutData}/>
               </section>
             </div>
           )}

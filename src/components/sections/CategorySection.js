@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { category } from "../../data/categoryData";
 import { data } from "../../data/dummyData";
 import ProductCard from "../../components/cards/ProductCard";
 import '../../styles/category-section.css'
 import CategoryCard from "../cards/CategoryCard";
 
-const CategorySection = () => {
-    // const [category, setCategory] = useState([])
-    
-    // const fitCategory = () => {
-    // //   const data = {${data.category} === {category.name} ? setCategory()}
-    // }
+const CategorySection = ({allProducts}) => {
+    const [products, setProducts] = useState([]);
+
+    const data = allProducts?.filter((data) => data.category === category.title)
+
+    const fitCategory = async () => {
+      const dataCategory = await data;
+      setProducts(dataCategory);
+    }
+
+    useEffect(() => {
+      fitCategory()
+    }, []);
+
+    console.log('result :', data)
+
   return (
     <section className="category-section">
       <div className="object-wrap">
@@ -21,12 +31,12 @@ const CategorySection = () => {
             <CategoryCard 
                 image={data.imgUrl}
                 name={data.title}
-                // onClick={fitCategory}
+                onClick={fitCategory}
             />
           ))}
         </div>
         <div>
-            {/* {data.map((data) => (
+            {products.map((data) => (
             <ProductCard
               id={data?.id}
               image={data?.image}
@@ -36,7 +46,7 @@ const CategorySection = () => {
               count={data.rating?.count}
               category={data?.category}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </section>
