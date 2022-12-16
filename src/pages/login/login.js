@@ -30,24 +30,32 @@ const Login = () => {
         dispatch({user: 1})
         console.log(state)
         navigate("/admin/update-stock")
+      } else if (email === "john@gmail.com" && password === "m38rmF$"){
+        alert("kamu user")
+        dispatch({user: 2})
+        navigate("/")
       } else {
-        axios.get('https://fakestoreapi.com/users/1')
-        .then(result => {
-          if(email === result.data.email && password === result.data.password){
-            alert("kamu user")
-            dispatch({user: 2})
-            
-            navigate("/")
-          } else {
-            alert("email belum terdaftar")
-          }
-          console.log(result.data)
-        })
-          .catch(error => {
-            alert('service error')
-            console.log(error)
-        })
+        alert("email belum terdaftar")
       }
+      
+      // else {
+      //   axios.get('https://fakestoreapi.com/users/1')
+      //   .then(result => {
+      //     if(email === result.data.email && password === result.data.password){
+      //       alert("kamu user")
+      //       dispatch({user: 2})
+            
+      //       navigate("/")
+      //     } else {
+      //       alert("email belum terdaftar")
+      //     }
+      //     console.log(result.data)
+      //   })
+      //     .catch(error => {
+      //       alert('service error')
+      //       console.log(error)
+      //   })
+      // }
     }
 
     const handleLogout = () => {
